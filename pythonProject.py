@@ -1,6 +1,6 @@
 import re
 
-archivoXML = open('test.xml')
+archivoXML = open('xml.xml')
 arbol = None
 
 class XMLTree:
@@ -17,7 +17,7 @@ class XMLTree:
 
 def prepararLectura():
     palabra = ""
-    while(palabra != "<devices"):
+    while(re.match(r"<devices",palabra) == None):
         palabra = leerPalabra()
 
 def leerPalabra():
@@ -87,7 +87,7 @@ def crearArbol(arbol):
                 print "\n isCloseAttrTag ... Finishing this tree"
                 return arbol
         s = leerPalabra()
-        print "\n\n\n Palabra: " + s
+        print "\t\tPalabra: " + s
     print "Finished Reading... returning tree"
     return arbol
 
